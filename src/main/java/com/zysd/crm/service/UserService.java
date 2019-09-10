@@ -1,4 +1,9 @@
 package com.zysd.crm.service;
 
-public class UserService {
+
+import com.zysd.crm.bean.ReturnT;
+
+public interface UserService {
+
+    ReturnT<String> login(String username, String password);
 }
