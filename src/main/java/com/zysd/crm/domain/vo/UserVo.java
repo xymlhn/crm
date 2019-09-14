@@ -1,5 +1,7 @@
-package com.zysd.crm.bean;
+package com.zysd.crm.domain.vo;
 
+import com.zysd.crm.domain.bean.Role;
+import com.zysd.crm.domain.bean.User;
 import lombok.Data;
 
 import java.io.Serializable;

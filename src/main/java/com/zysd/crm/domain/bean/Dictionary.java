@@ -1,4 +1,4 @@
-package com.zysd.crm.bean;
+package com.zysd.crm.domain.bean;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

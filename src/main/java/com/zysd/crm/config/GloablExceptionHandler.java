@@ -1,6 +1,7 @@
 package com.zysd.crm.config;
 
-import com.zysd.crm.bean.RestResponse;
+import com.zysd.crm.domain.bean.RestResponse;
+import com.zysd.crm.domain.enums.BaseEnum;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -21,8 +22,8 @@ public class GloablExceptionHandler {
     public RestResponse<String> handleException(Exception e) {
         // 记录错误信息
         String msg = e.getMessage();
-        if (msg == null || msg.equals("")) {
-            msg = "服务器出错";
+        if (msg == null || msg.equals(BaseEnum.NULL_STRING)) {
+            msg = "服务器发生未知错误，请联系管理员";
         }
         return  RestResponse.fail(msg);
     }

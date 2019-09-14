@@ -1,7 +1,7 @@
 package com.zysd.crm.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.zysd.crm.bean.Dictionary;
+import com.zysd.crm.domain.bean.Dictionary;
 import com.zysd.crm.config.ZYException;
 import com.zysd.crm.mapper.DictionaryMapper;
 import com.zysd.crm.service.DictionaryService;
@@ -18,17 +18,16 @@ public class DictionaryServiceImpl implements DictionaryService {
     private DictionaryMapper dictMapper;
 
     @Override
-    public List<Dictionary> findDictTrees(String name) {
+    public List<Dictionary> list(Integer parentId) {
 
         Dictionary dictionary = new Dictionary();
-        dictionary.setName(name);
         QueryWrapper<Dictionary> queryWrapper = new QueryWrapper<>();
         queryWrapper.setEntity(dictionary);
         List<Dictionary> allMenu = dictMapper.selectList(queryWrapper);
         //根节点
         List<Dictionary> rootMenu = new ArrayList<>();
         for (Dictionary nav : allMenu) {
-            if(nav.getParentId().equals(Dictionary.ROOT)){
+            if(nav.getParentId().equals(parentId)){
                 rootMenu.add(nav);
             }
         }
@@ -56,14 +55,13 @@ public class DictionaryServiceImpl implements DictionaryService {
     }
 
     private void oneDictionary(Dictionary dictionary) {
-        if (!dictionary.getParentId().equals(Dictionary.ROOT)){
-            QueryWrapper<Dictionary> dictionaryQueryWrapper = new QueryWrapper<>();
-            dictionaryQueryWrapper.lambda().eq(Dictionary::getId, dictionary.getParentId());
-            Dictionary dict = dictMapper.selectOne(dictionaryQueryWrapper);
-            if (dict == null){
-                throw new ZYException("字典parentId:" + dictionary.getParentId() +"不合法");
-            }
+        QueryWrapper<Dictionary> dictionaryQueryWrapper = new QueryWrapper<>();
+        dictionaryQueryWrapper.lambda().eq(Dictionary::getId, dictionary.getParentId());
+        Dictionary dict = dictMapper.selectOne(dictionaryQueryWrapper);
+        if (dict == null){
+            throw new ZYException("字典parentId:" + dictionary.getParentId() +"不合法");
         }
+
     }
 
     /**

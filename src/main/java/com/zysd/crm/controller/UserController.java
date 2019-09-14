@@ -1,8 +1,9 @@
 package com.zysd.crm.controller;
 
-import com.zysd.crm.bean.RestResponse;
-import com.zysd.crm.bean.User;
-import com.zysd.crm.bean.UserVo;
+import com.zysd.crm.base.BaseController;
+import com.zysd.crm.domain.bean.RestResponse;
+import com.zysd.crm.domain.bean.User;
+import com.zysd.crm.domain.vo.UserVo;
 import com.zysd.crm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import javax.validation.Valid;
 */
 @Controller
 @RequestMapping(value = "/crm")
-public class UserController {
+public class UserController extends BaseController {
 
     @Autowired
     private UserService userService;
@@ -33,8 +34,7 @@ public class UserController {
     @GetMapping("/user")
     @ResponseBody
     public RestResponse<UserVo> user(HttpServletRequest request) {
-
-        return RestResponse.success((UserVo) request.getAttribute("user"));
+        return RestResponse.success(super.getCurrentUser());
 
 
     }

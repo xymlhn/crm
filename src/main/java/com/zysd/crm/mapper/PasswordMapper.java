@@ -1,7 +1,7 @@
 package com.zysd.crm.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zysd.crm.bean.Password;
+import com.zysd.crm.domain.bean.Password;
 import org.springframework.stereotype.Repository;
 
 @Repository

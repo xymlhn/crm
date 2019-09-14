@@ -1,4 +1,4 @@
-package com.zysd.crm.bean;
+package com.zysd.crm.domain.bean;
 
 import lombok.Data;
 import org.springframework.http.HttpStatus;

@@ -5,8 +5,8 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.zysd.crm.bean.User;
-import com.zysd.crm.bean.UserVo;
+import com.zysd.crm.domain.vo.UserVo;
+import com.zysd.crm.domain.enums.BaseEnum;
 import com.zysd.crm.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -68,7 +68,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         }
         //刷新token过期时间
         redisUtil.expire(userId,expired);
-        httpServletRequest.setAttribute("user",user);
+        httpServletRequest.setAttribute(BaseEnum.USER_STRING,user);
         return true;
     }
 

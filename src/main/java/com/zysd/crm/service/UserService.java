@@ -1,7 +1,7 @@
 package com.zysd.crm.service;
 
 
-public interface UserService {
+public interface UserService{
 
     String login(String username, String password);
 }

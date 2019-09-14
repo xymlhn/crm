@@ -1,11 +1,8 @@
 package com.zysd.crm.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zysd.crm.bean.UserRole;
-import org.apache.ibatis.annotations.Select;
+import com.zysd.crm.domain.bean.UserRole;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
 *  user_role

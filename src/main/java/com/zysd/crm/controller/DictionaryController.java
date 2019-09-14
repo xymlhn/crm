@@ -1,7 +1,8 @@
 package com.zysd.crm.controller;
 
-import com.zysd.crm.bean.Dictionary;
-import com.zysd.crm.bean.RestResponse;
+import com.zysd.crm.base.BaseController;
+import com.zysd.crm.domain.bean.Dictionary;
+import com.zysd.crm.domain.bean.RestResponse;
 import com.zysd.crm.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("crm")
-public class DictionaryController {
+public class DictionaryController extends BaseController {
 
     @Autowired
     private DictionaryService dictionaryService;
@@ -31,9 +32,9 @@ public class DictionaryController {
      * @return
      */
     @GetMapping("dictionary")
-    public RestResponse<List<Dictionary>> listTrees(@RequestParam(required = false) String name) {
-
-        return RestResponse.success(dictionaryService.findDictTrees(name));
+    public RestResponse<List<Dictionary>> list(@RequestParam(required = false) Integer parentId) {
+        parentId = parentId == null ? Dictionary.ROOT:parentId;
+        return RestResponse.success(dictionaryService.list(parentId));
     }
 
     @PostMapping("dictionary")

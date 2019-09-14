@@ -1,12 +1,12 @@
 package com.zysd.crm.service;
 
-import com.zysd.crm.bean.Dictionary;
+import com.zysd.crm.domain.bean.Dictionary;
 
 import java.util.List;
 
 public interface DictionaryService {
 
-    List<Dictionary> findDictTrees(String name);
+    List<Dictionary> list(Integer parentId);
 
     Dictionary insert(Dictionary dictionary);
 
