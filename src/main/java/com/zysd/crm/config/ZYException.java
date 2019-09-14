@@ -2,28 +2,23 @@ package com.zysd.crm.config;
 
 
 import lombok.Data;
+import org.springframework.http.HttpStatus;
 
 @Data
 public class ZYException extends RuntimeException {
 
     private Integer errCode = 0;
 
-    public ZYException(){
-
-    }
-
-    public ZYException(Integer errCode){
+    public ZYException(Integer errCode,String msg){
+        super(msg);
         this.errCode = errCode;
     }
 
     public ZYException(String msg) {
         super(msg);
+        errCode = HttpStatus.INTERNAL_SERVER_ERROR.value();
     }
 
-    public ZYException(Integer errCode, String msg){
-        super(msg);
-        this.errCode = errCode;
-    }
 
     public static ZYException fail(String msg) {
         return new ZYException(msg);

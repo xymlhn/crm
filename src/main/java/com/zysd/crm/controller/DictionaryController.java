@@ -6,6 +6,7 @@ import com.zysd.crm.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ import java.util.List;
  * @createtime 2019/5/28 6:02 PM
  */
 @RestController
-@RequestMapping("dictionary")
+@RequestMapping("crm")
 public class DictionaryController {
 
     @Autowired
@@ -29,20 +30,19 @@ public class DictionaryController {
      * @createtime 2019/8/13 10:07 AM
      * @return
      */
-    @GetMapping("trees")
+    @GetMapping("dictionary")
     public RestResponse<List<Dictionary>> listTrees(@RequestParam(required = false) String name) {
 
         return RestResponse.success(dictionaryService.findDictTrees(name));
     }
 
-    @PostMapping("insert")
-    public RestResponse<Dictionary> insert(@RequestBody Dictionary dictionary) {
-
+    @PostMapping("dictionary")
+    public RestResponse<Dictionary> insert(@Valid @RequestBody Dictionary dictionary) {
         return RestResponse.success(dictionaryService.insert(dictionary));
     }
 
-    @PutMapping("update")
-    public RestResponse<Dictionary> update(@RequestBody Dictionary dictionary) {
+    @PutMapping("dictionary")
+    public RestResponse<Dictionary> update(@Valid Dictionary dictionary) {
         return RestResponse.success(dictionaryService.update(dictionary));
     }
 }

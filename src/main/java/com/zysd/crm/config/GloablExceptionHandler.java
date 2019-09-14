@@ -1,9 +1,12 @@
 package com.zysd.crm.config;
 
 import com.zysd.crm.bean.RestResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 /**
  * 全局异常处理
@@ -27,7 +30,17 @@ public class GloablExceptionHandler {
     @ExceptionHandler(ZYException.class)
     @ResponseBody
     public RestResponse<String> handleException(ZYException e) {
-        // 记录错误信息
         return  RestResponse.fail(e.getErrCode(),e.getMessage());
     }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseBody
+    public RestResponse<String> handleException(MethodArgumentNotValidException ex) {
+
+        if(ex.getBindingResult().hasErrors()){
+            return  RestResponse.fail(HttpStatus.BAD_REQUEST.value(),ex.getBindingResult().getFieldErrors().get(0).getDefaultMessage());
+        }
+        return RestResponse.fail(ex.getMessage());
+    }
+
 }

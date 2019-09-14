@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Data
@@ -25,11 +27,15 @@ public class Dictionary{
     /**
      * 字典Code
      */
+    @NotBlank(message="code不能为空！")
+    @Length(max=32,message="code长度不能超过10")
     private String code;
 
     /**
      * 字典Name
      */
+    @NotBlank(message="name不能为空！")
+    @Length(max=32,message="name长度不能超过32")
     private String name;
 
     /**

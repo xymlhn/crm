@@ -1,12 +1,12 @@
 package com.zysd.crm.bean;
 
-import java.io.Serializable;
-import java.util.Date;
-
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  *  user
@@ -25,11 +25,15 @@ public class User implements Serializable {
     /**
      * user_name
      */
+    @NotBlank(message="userName不能为空！")
+    @Length(max=32,message="userName长度不能超过32")
     private String userName;
 
     /**
      * password
      */
+    @NotBlank(message="password不能为空！")
+    @Length(max=32,message="password长度不能超过32")
     private String password;
 
     /**

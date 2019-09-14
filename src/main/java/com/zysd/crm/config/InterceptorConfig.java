@@ -15,7 +15,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
         registry.addInterceptor(authenticationInterceptor())
                 .addPathPatterns("/**")
                 //屏蔽不需要token的url
-                .excludePathPatterns("/user/login");
+                .excludePathPatterns("/crm/login");
     }
     @Bean
     public AuthenticationInterceptor authenticationInterceptor() {
