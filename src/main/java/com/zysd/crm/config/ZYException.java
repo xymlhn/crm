@@ -6,13 +6,13 @@ import lombok.Data;
 @Data
 public class ZYException extends RuntimeException {
 
-    private int errCode = 0;
+    private Integer errCode = 0;
 
     public ZYException(){
 
     }
 
-    public ZYException(int errCode){
+    public ZYException(Integer errCode){
         this.errCode = errCode;
     }
 
@@ -20,17 +20,9 @@ public class ZYException extends RuntimeException {
         super(msg);
     }
 
-    public ZYException(int errCode, String msg){
+    public ZYException(Integer errCode, String msg){
         super(msg);
         this.errCode = errCode;
-    }
-
-    public ZYException(Throwable cause) {
-        super(cause);
-    }
-
-    public ZYException(String message, Throwable cause) {
-        super(message, cause);
     }
 
     public static ZYException fail(String msg) {

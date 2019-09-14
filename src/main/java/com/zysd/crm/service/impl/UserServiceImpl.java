@@ -8,7 +8,6 @@ import com.zysd.crm.config.ZYException;
 import com.zysd.crm.mapper.PasswordMapper;
 import com.zysd.crm.mapper.RoleMapper;
 import com.zysd.crm.mapper.UserMapper;
-import com.zysd.crm.mapper.UserRoleMapper;
 import com.zysd.crm.service.UserService;
 import com.zysd.crm.utils.PasswordUtil;
 import com.zysd.crm.utils.RedisUtil;
@@ -17,7 +16,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -41,7 +39,7 @@ public class UserServiceImpl implements UserService {
     private RoleMapper roleMapper;
 
     @Override
-    public ReturnT<String> login(String username, String password) {
+    public String login(String username, String password) {
         //根据用户名或者email查询用户列表
         QueryWrapper<User> userWrapper = new QueryWrapper<>();
         userWrapper.lambda().eq(User::getUserName, username).or().eq(User::getEmail,username);
@@ -74,6 +72,6 @@ public class UserServiceImpl implements UserService {
         String token = JWT.create().withAudience(user.getId())
                 .withIssuedAt(new Date())
                 .sign(Algorithm.HMAC256(secretKey));
-        return new ReturnT<>(token);
+        return token;
     }
 }
