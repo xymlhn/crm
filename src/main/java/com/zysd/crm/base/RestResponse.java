@@ -19,7 +19,7 @@ public class RestResponse<T> implements Serializable {
     }
 
     public static <T> RestResponse<T> success(T data){
-        return new RestResponse<T>(HttpStatus.OK.value(),"",data);
+        return new RestResponse<>(HttpStatus.OK.value(), "", data);
     }
     public static RestResponse<String> fail(String message){
         return new RestResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), message, null);

@@ -7,9 +7,9 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
   #redis配置
   redis:
-    host: 127.0.0.1
+    host: 139.9.60.208
     port: 6379
-    password:
+    password: ucg123456
     database: 0
     timeout: 200
     jedis:

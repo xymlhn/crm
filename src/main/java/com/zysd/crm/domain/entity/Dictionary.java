@@ -22,6 +22,7 @@ public class Dictionary{
     /**
      * 父级Code
      */
+    @Length(max=255,message="parentId长度不能超过8")
     private Integer parentId;
 
     /**
@@ -41,6 +42,7 @@ public class Dictionary{
     /**
      * 字典描述
      */
+    @Length(max=255,message="description长度不能超过255")
     private String description;
 
     // 树菜单
