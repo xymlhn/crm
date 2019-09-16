@@ -1,7 +1,6 @@
 package com.zysd.crm.base;
 
 import com.zysd.crm.domain.vo.UserVo;
-import com.zysd.crm.domain.enums.BaseEnum;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 

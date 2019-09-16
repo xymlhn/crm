@@ -1,8 +1,8 @@
 package com.zysd.crm.controller;
 
 import com.zysd.crm.base.BaseController;
-import com.zysd.crm.domain.bean.RestResponse;
-import com.zysd.crm.domain.bean.User;
+import com.zysd.crm.base.RestResponse;
+import com.zysd.crm.domain.entity.User;
 import com.zysd.crm.domain.vo.UserVo;
 import com.zysd.crm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

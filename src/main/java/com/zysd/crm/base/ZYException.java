@@ -1,4 +1,4 @@
-package com.zysd.crm.config;
+package com.zysd.crm.base;
 
 
 import lombok.Data;

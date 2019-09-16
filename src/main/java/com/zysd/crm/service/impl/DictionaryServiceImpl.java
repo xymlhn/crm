@@ -1,8 +1,8 @@
 package com.zysd.crm.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.zysd.crm.domain.bean.Dictionary;
-import com.zysd.crm.config.ZYException;
+import com.zysd.crm.domain.entity.Dictionary;
+import com.zysd.crm.base.ZYException;
 import com.zysd.crm.mapper.DictionaryMapper;
 import com.zysd.crm.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;

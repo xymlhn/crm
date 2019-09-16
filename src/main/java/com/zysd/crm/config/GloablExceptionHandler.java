@@ -1,7 +1,8 @@
 package com.zysd.crm.config;
 
-import com.zysd.crm.domain.bean.RestResponse;
-import com.zysd.crm.domain.enums.BaseEnum;
+import com.zysd.crm.base.ZYException;
+import com.zysd.crm.base.RestResponse;
+import com.zysd.crm.base.BaseEnum;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;

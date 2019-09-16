@@ -1,4 +1,4 @@
-package com.zysd.crm.domain.enums;
+package com.zysd.crm.base;
 
 /**
  * Created by Garmin on 2018/8/30.
@@ -8,7 +8,7 @@ public class BaseEnum {
      * 空字符串
      */
     public static final String NULL_STRING = "";
-
+    //用户key
     public static final String USER_STRING = "user";
 
     public enum YesOrNo {

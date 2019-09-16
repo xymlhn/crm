@@ -1,4 +1,4 @@
-package com.zysd.crm.domain.bean;
+package com.zysd.crm.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;

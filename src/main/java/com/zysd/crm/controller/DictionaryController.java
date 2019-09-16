@@ -1,8 +1,8 @@
 package com.zysd.crm.controller;
 
 import com.zysd.crm.base.BaseController;
-import com.zysd.crm.domain.bean.Dictionary;
-import com.zysd.crm.domain.bean.RestResponse;
+import com.zysd.crm.domain.entity.Dictionary;
+import com.zysd.crm.base.RestResponse;
 import com.zysd.crm.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
 package com.zysd.crm.service;
 
-import com.zysd.crm.domain.bean.Dictionary;
+import com.zysd.crm.domain.entity.Dictionary;
 
 import java.util.List;
 
