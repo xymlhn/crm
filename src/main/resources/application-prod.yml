@@ -1,5 +1,14 @@
 server:
   port: 9092
+
+# JWT 配置
+jwt:
+  secret:
+    key: happyjava1234214214asfasfasfasdf
+  # jwt过期时间
+  token:
+    expired: 1000
+
 spring:
   jackson:
     default-property-inclusion: ALWAYS
