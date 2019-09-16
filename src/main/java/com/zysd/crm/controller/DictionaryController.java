@@ -27,7 +27,7 @@ public class DictionaryController extends BaseController {
     /**
      * 功能说明：查找字典树
      *
-     * @author 梁煜圣
+     * @author
      * @createtime 2019/8/13 10:07 AM
      * @return
      */
