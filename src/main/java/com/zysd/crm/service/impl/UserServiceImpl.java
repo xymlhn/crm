@@ -73,6 +73,6 @@ public class UserServiceImpl implements UserService {
         String token = JWT.create().withAudience(user.getId())
                 .withIssuedAt(new Date())
                 .sign(Algorithm.HMAC256(secretKey));
-        return token + "haha";
+        return token + "hoho";
     }
 }
