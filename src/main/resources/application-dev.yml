@@ -16,6 +16,7 @@ ok:
     max-idle-connections: 200
     read-timeout: 30
     write-timeout: 30
+
 # 调用数据中心的url地址
 kettle:
   url: http://139.9.60.208:7083/kettle/tran

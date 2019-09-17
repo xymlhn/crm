@@ -1,5 +1,7 @@
 package com.zysd.crm.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zysd.crm.base.BaseController;
 import com.zysd.crm.base.RestResponse;
 import com.zysd.crm.domain.entity.Dictionary;
@@ -8,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 /**
  * 项目名称：UCG
@@ -32,9 +33,9 @@ public class DictionaryController extends BaseController {
      * @return
      */
     @GetMapping("dictionary")
-    public RestResponse<List<Dictionary>> list(@RequestParam(required = false) Integer parentId) {
+    public RestResponse<IPage<Dictionary>> list(Page page,@RequestParam(required = false) Integer parentId) {
         parentId = parentId == null ? Dictionary.ROOT:parentId;
-        return RestResponse.success(dictionaryService.list(parentId));
+        return RestResponse.success(dictionaryService.list(page,parentId));
     }
 
     @PostMapping("dictionary")

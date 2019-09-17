@@ -1,8 +1,10 @@
 package com.zysd.crm.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.zysd.crm.domain.entity.Dictionary;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zysd.crm.base.ZYException;
+import com.zysd.crm.domain.entity.Dictionary;
 import com.zysd.crm.mapper.DictionaryMapper;
 import com.zysd.crm.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,26 +20,12 @@ public class DictionaryServiceImpl implements DictionaryService {
     private DictionaryMapper dictMapper;
 
     @Override
-    public List<Dictionary> list(Integer parentId) {
+    public IPage<Dictionary> list(Page page,Integer parentId) {
 
         Dictionary dictionary = new Dictionary();
         QueryWrapper<Dictionary> queryWrapper = new QueryWrapper<>();
         queryWrapper.setEntity(dictionary);
-        List<Dictionary> allMenu = dictMapper.selectList(queryWrapper);
-        //根节点
-        List<Dictionary> rootMenu = new ArrayList<>();
-        for (Dictionary nav : allMenu) {
-            if(nav.getParentId().equals(parentId)){
-                rootMenu.add(nav);
-            }
-        }
-        //为根菜单设置子菜单，getClild是递归调用的
-        for (Dictionary nav : rootMenu) {
-            /* 获取根节点下的所有子节点 使用getChild方法*/
-            List<Dictionary> childList = getChild(nav.getId(), allMenu);
-            nav.setChildren(childList);//给根节点设置子节点
-        }
-        return  rootMenu;
+        return dictMapper.pageDictionary(page,parentId);
     }
 
     @Override
