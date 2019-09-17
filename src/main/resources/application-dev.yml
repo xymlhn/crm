@@ -8,7 +8,17 @@ jwt:
 # jwt过期时间
   token:
     expired: 1000
-
+# okhttp配置
+ok:
+  http:
+    connect-timeout: 30
+    keep-alive-duration: 300
+    max-idle-connections: 200
+    read-timeout: 30
+    write-timeout: 30
+# 调用数据中心的url地址
+kettle:
+  url: http://139.9.60.208:7083/kettle/tran
 spring:
   jackson:
     default-property-inclusion: ALWAYS
@@ -74,7 +84,7 @@ spring:
         wall:
           config:
             multi-statement-allow: true
-# 配置slq打印日志
+# 配置sql打印日志
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

@@ -1,5 +1,25 @@
 server:
-  port: 9093
+  port: 9091
+
+# JWT 配置
+jwt:
+  secret:
+    key: happyjava1234214214asfasfasfasdf
+  # jwt过期时间
+  token:
+    expired: 1000
+ok:
+  http:
+    connect-timeout: 30
+    keep-alive-duration: 300
+    max-idle-connections: 200
+    read-timeout: 30
+    write-timeout: 30
+
+# 调用数据中心的url地址
+kettle:
+  url: http://139.9.60.208:7083/kettle/tran
+
 spring:
   jackson:
     default-property-inclusion: ALWAYS
@@ -7,7 +27,7 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
   #redis配置
   redis:
-    host: 127.0.0.1
+    host: 192.168.13.161
     port: 6379
     password:
     database: 0
@@ -65,4 +85,7 @@ spring:
         wall:
           config:
             multi-statement-allow: true
-
+# 配置slq打印日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

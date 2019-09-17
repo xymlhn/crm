@@ -5,6 +5,7 @@ import com.zysd.crm.base.RestResponse;
 import com.zysd.crm.domain.entity.User;
 import com.zysd.crm.domain.vo.UserVo;
 import com.zysd.crm.service.UserService;
+import com.zysd.crm.utils.OkHttpCli;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ public class UserController extends BaseController {
 
     @Autowired
     private UserService userService;
+
     /**
     * 登录
     */
