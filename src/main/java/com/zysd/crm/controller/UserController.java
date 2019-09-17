@@ -5,7 +5,6 @@ import com.zysd.crm.base.RestResponse;
 import com.zysd.crm.domain.entity.User;
 import com.zysd.crm.domain.vo.UserVo;
 import com.zysd.crm.service.UserService;
-import com.zysd.crm.utils.OkHttpCli;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +36,15 @@ public class UserController extends BaseController {
     @ResponseBody
     public RestResponse<UserVo> user(HttpServletRequest request) {
         return RestResponse.success(super.getCurrentUser());
+    }
 
-
+    /**
+     * 登录
+     */
+    @GetMapping("/logout")
+    @ResponseBody
+    public RestResponse<String> logout() {
+        userService.logout(getCurrentUser().getUser().getId());
+        return RestResponse.success("");
     }
 }

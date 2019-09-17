@@ -75,4 +75,9 @@ public class UserServiceImpl implements UserService {
                 .sign(Algorithm.HMAC256(secretKey));
         return token;
     }
+
+    @Override
+    public void logout(String userId) {
+        redisUtil.del(userId);
+    }
 }
