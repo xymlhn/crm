@@ -1,8 +1,8 @@
 package com.zysd.crm.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zysd.crm.base.BaseController;
+import com.zysd.crm.base.FilterVo;
 import com.zysd.crm.base.RestResponse;
 import com.zysd.crm.domain.entity.Dictionary;
 import com.zysd.crm.service.DictionaryService;
@@ -32,10 +32,10 @@ public class DictionaryController extends BaseController {
      * @createtime 2019/8/13 10:07 AM
      * @return
      */
-    @GetMapping("dictionary")
-    public RestResponse<IPage<Dictionary>> list(Page page,@RequestParam(required = false) Integer parentId) {
-        parentId = parentId == null ? Dictionary.ROOT:parentId;
-        return RestResponse.success(dictionaryService.list(page,parentId));
+    @PostMapping("page")
+    public RestResponse<IPage<Dictionary>> list(@RequestBody FilterVo<Dictionary> filterVo) {
+
+        return RestResponse.success(dictionaryService.pageDictionary(filterVo));
     }
 
     @PostMapping("dictionary")

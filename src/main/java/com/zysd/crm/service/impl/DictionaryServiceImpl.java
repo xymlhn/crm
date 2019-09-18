@@ -2,7 +2,7 @@ package com.zysd.crm.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zysd.crm.base.FilterVo;
 import com.zysd.crm.base.ZYException;
 import com.zysd.crm.domain.entity.Dictionary;
 import com.zysd.crm.mapper.DictionaryMapper;
@@ -20,12 +20,13 @@ public class DictionaryServiceImpl implements DictionaryService {
     private DictionaryMapper dictMapper;
 
     @Override
-    public IPage<Dictionary> list(Page page,Integer parentId) {
-
-        Dictionary dictionary = new Dictionary();
+    public IPage<Dictionary> pageDictionary(FilterVo<Dictionary> filterVo) {
+        Dictionary dictionary = filterVo.getFilter();
+        dictionary.setParentId(dictionary.getParentId() == null ? Dictionary.ROOT:dictionary.getParentId());
         QueryWrapper<Dictionary> queryWrapper = new QueryWrapper<>();
         queryWrapper.setEntity(dictionary);
-        return dictMapper.pageDictionary(page,parentId);
+        queryWrapper.orderBy(filterVo.hasOrder(), filterVo.isAsc(), filterVo.getOrderBy());
+        return dictMapper.selectPage(filterVo.getPage(),queryWrapper);
     }
 
     @Override
