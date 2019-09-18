@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -54,4 +55,13 @@ public class Dictionary{
      * 是否可用
      */
     private Integer enable;
+
+    private Date createTime;
+
+    private String createUser;
+
+    private Date updateTime;
+
+    private String updateUser;
+
 }

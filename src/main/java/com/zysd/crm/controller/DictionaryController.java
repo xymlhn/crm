@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 
 /**
  * 项目名称：UCG
@@ -40,11 +41,17 @@ public class DictionaryController extends BaseController {
 
     @PostMapping("dictionary")
     public RestResponse<Dictionary> insert(@Valid @RequestBody Dictionary dictionary) {
+        dictionary.setCreateTime(new Date());
+        dictionary.setUpdateTime(new Date());
+        dictionary.setCreateUser(getCurrentUser().getUser().getUserName());
+        dictionary.setUpdateUser(getCurrentUser().getUser().getUserName());
         return RestResponse.success(dictionaryService.insert(dictionary));
     }
 
     @PutMapping("dictionary")
     public RestResponse<Dictionary> update(@Valid @RequestBody Dictionary dictionary) {
+        dictionary.setUpdateTime(new Date());
+        dictionary.setUpdateUser(getCurrentUser().getUser().getUserName());
         return RestResponse.success(dictionaryService.update(dictionary));
     }
 }
