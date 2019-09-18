@@ -44,7 +44,7 @@ public class DictionaryController extends BaseController {
     }
 
     @PutMapping("dictionary")
-    public RestResponse<Dictionary> update(@Valid Dictionary dictionary) {
+    public RestResponse<Dictionary> update(@Valid @RequestBody Dictionary dictionary) {
         return RestResponse.success(dictionaryService.update(dictionary));
     }
 }
