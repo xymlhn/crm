@@ -38,12 +38,24 @@ public class DictionaryServiceImpl implements DictionaryService {
 
     @Override
     public Dictionary update(Dictionary dictionary) {
+        if (dictionary.getId() == null){
+            throw new ZYException("id为空无法更新字典");
+        }
         oneDictionary(dictionary);
         dictMapper.updateById(dictionary);
         return dictionary;
     }
 
     private void oneDictionary(Dictionary dictionary) {
+
+        QueryWrapper<Dictionary> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(Dictionary::getCode, dictionary.getCode())
+                .eq(Dictionary::getParentId, dictionary.getParentId());
+        Dictionary tempDict = dictMapper.selectOne(queryWrapper);
+        if (tempDict != null && !tempDict.getId().equals(dictionary.getId())){
+            throw new ZYException("在同一层级parentId:" + dictionary.getParentId() +"不能同时存在一样的code");
+        }
+
         if(!dictionary.getParentId().equals(Dictionary.ROOT)){
             QueryWrapper<Dictionary> dictionaryQueryWrapper = new QueryWrapper<>();
             dictionaryQueryWrapper.lambda().eq(Dictionary::getId, dictionary.getParentId());
