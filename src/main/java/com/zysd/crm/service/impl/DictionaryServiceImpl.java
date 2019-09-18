@@ -43,11 +43,13 @@ public class DictionaryServiceImpl implements DictionaryService {
     }
 
     private void oneDictionary(Dictionary dictionary) {
-        QueryWrapper<Dictionary> dictionaryQueryWrapper = new QueryWrapper<>();
-        dictionaryQueryWrapper.lambda().eq(Dictionary::getId, dictionary.getParentId());
-        Dictionary dict = dictMapper.selectOne(dictionaryQueryWrapper);
-        if (dict == null){
-            throw new ZYException("字典parentId:" + dictionary.getParentId() +"不合法");
+        if(!dictionary.getParentId().equals(Dictionary.ROOT)){
+            QueryWrapper<Dictionary> dictionaryQueryWrapper = new QueryWrapper<>();
+            dictionaryQueryWrapper.lambda().eq(Dictionary::getId, dictionary.getParentId());
+            Dictionary dict = dictMapper.selectOne(dictionaryQueryWrapper);
+            if (dict == null){
+                throw new ZYException("字典parentId:" + dictionary.getParentId() +"不合法");
+            }
         }
 
     }

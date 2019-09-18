@@ -8,6 +8,7 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -20,9 +21,9 @@ public class Dictionary{
     private Integer id;
 
     /**
-     * 父级Code
+     * 父级Id
      */
-    @Length(max=255,message="parentId长度不能超过8")
+    @NotNull(message = "parentId不能为空")
     private Integer parentId;
 
     /**
