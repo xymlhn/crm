@@ -5,6 +5,13 @@ import org.springframework.http.HttpStatus;
 
 import java.io.Serializable;
 
+/**
+ * 项目名称：CRM
+ * 功能说明：前后端统一样式类
+ *
+ * @author cartman
+ * @createtime 2019/9/18 3:19 下午
+ */
 @Data
 public class RestResponse<T> implements Serializable {
     public static final long serialVersionUID = 42L;

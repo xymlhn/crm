@@ -10,9 +10,6 @@ import com.zysd.crm.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class DictionaryServiceImpl implements DictionaryService {
 
@@ -46,6 +43,11 @@ public class DictionaryServiceImpl implements DictionaryService {
         return dictionary;
     }
 
+
+    /**
+     * 字典检查是否同code值，parentId是否合法
+     * @param dictionary
+     */
     private void oneDictionary(Dictionary dictionary) {
 
         QueryWrapper<Dictionary> queryWrapper = new QueryWrapper<>();
@@ -65,33 +67,6 @@ public class DictionaryServiceImpl implements DictionaryService {
             }
         }
 
-    }
-
-    /**
-     * 获取子节点
-     * @param id 父节点id
-     * @param allMenu 所有菜单列表
-     * @return 每个根节点下，所有子菜单列表
-     */
-    private List<Dictionary> getChild(Integer id,List<Dictionary> allMenu){
-        //子菜单
-        List<Dictionary> childList = new ArrayList<>();
-        for (Dictionary nav : allMenu) {
-            // 遍历所有节点，将所有菜单的父id与传过来的根节点的id比较
-            //相等说明：为该根节点的子节点。
-            if(nav.getParentId().equals(id)){
-                childList.add(nav);
-            }
-        }
-        //递归
-        for (Dictionary nav : childList) {
-            nav.setChildren(getChild(nav.getId(), allMenu));
-        }
-        //如果节点下没有子节点，返回一个空List（递归退出）
-        if(childList.isEmpty()){
-            return new ArrayList<>();
-        }
-        return childList;
     }
 
 }

@@ -6,7 +6,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-//Spring boot方式
+/**
+ * 项目名称：CRM
+ * 功能说明：mybatis全局配置
+ *
+ * @author cartman
+ * @createtime 2019/9/18 3:19 下午
+ */
 @EnableTransactionManagement
 @Configuration
 @MapperScan("com.baomidou.cloud.service.*.mapper*")

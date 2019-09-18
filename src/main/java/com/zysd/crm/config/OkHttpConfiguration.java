@@ -14,8 +14,11 @@ import java.util.concurrent.TimeUnit;
 
 
 /**
- * @author Answer.AI.L
- * @date 2019-04-09
+ * 项目名称：CRM
+ * 功能说明：okhttp 全局配置
+ *
+ * @author cartman
+ * @createtime 2019/9/18 3:19 下午
  */
 @Configuration
 public class OkHttpConfiguration {

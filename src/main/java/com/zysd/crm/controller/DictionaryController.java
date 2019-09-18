@@ -13,11 +13,11 @@ import javax.validation.Valid;
 import java.util.Date;
 
 /**
- * 项目名称：UCG
- * 功能说明：字典Controller
+ * 项目名称：CRM
+ * 功能说明：字典控制器
  *
- * @author 夏伟耀
- * @createtime 2019/5/28 6:02 PM
+ * @author cartman
+ * @createtime 2019/9/18 3:19 下午
  */
 @RestController
 @RequestMapping("crm")
@@ -27,11 +27,11 @@ public class DictionaryController extends BaseController {
     private DictionaryService dictionaryService;
 
     /**
-     * 功能说明：查找字典树
+     * 功能说明：查找字典分页
      *
-     * @author
+     * @author cartman
      * @createtime 2019/8/13 10:07 AM
-     * @return
+     * @return 字典分页
      */
     @PostMapping("pageDictionary")
     public RestResponse<IPage<Dictionary>> list(@RequestBody FilterVo<Dictionary> filterVo) {
@@ -39,6 +39,11 @@ public class DictionaryController extends BaseController {
         return RestResponse.success(dictionaryService.pageDictionary(filterVo));
     }
 
+    /**
+     * 插入字典
+     * @param dictionary
+     * @return
+     */
     @PostMapping("dictionary")
     public RestResponse<Dictionary> insert(@Valid @RequestBody Dictionary dictionary) {
         dictionary.setCreateTime(new Date());
@@ -48,6 +53,11 @@ public class DictionaryController extends BaseController {
         return RestResponse.success(dictionaryService.insert(dictionary));
     }
 
+    /**
+     * 更新字典
+     * @param dictionary
+     * @return
+     */
     @PutMapping("dictionary")
     public RestResponse<Dictionary> update(@Valid @RequestBody Dictionary dictionary) {
         dictionary.setUpdateTime(new Date());
