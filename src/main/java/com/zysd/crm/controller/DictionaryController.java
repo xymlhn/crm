@@ -32,7 +32,7 @@ public class DictionaryController extends BaseController {
      * @createtime 2019/8/13 10:07 AM
      * @return
      */
-    @PostMapping("page")
+    @PostMapping("pageDictionary")
     public RestResponse<IPage<Dictionary>> list(@RequestBody FilterVo<Dictionary> filterVo) {
 
         return RestResponse.success(dictionaryService.pageDictionary(filterVo));
